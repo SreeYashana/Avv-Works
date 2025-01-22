@@ -1,0 +1,311 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AAV Works Pvt. Ltd. - Railway S&T Design</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,600,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    /* Chatbot Button */
+    .chatbot-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #008080; /* Teal */
+    color: white;
+    border: none;
+    border-radius: 50px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+.chatbot-btn:hover {
+    background-color: #20B2AA; /* Lighter teal on hover */
+}
+
+/* Chatbox Styling */
+.chatbox-container {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 350px;
+    height: 500px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    display: none; /* Initially hidden */
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Chatbox Header */
+.chatbox-header {
+    background: #008080; /* Teal */
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Close Button */
+.close-chat {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* Chatbot Iframe */
+.chatbox-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+</style> 
+</head>
+<body>
+<!-- loder -->
+
+<div class="loading-page">
+   
+   <div class="icon-container">
+    <svg id="svg"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M221.5 51.7C216.6 39.8 204.9 32 192 32s-24.6 7.8-29.5 19.7l-120 288-40 96c-6.8 16.3 .9 35 17.2 41.8s35-.9 41.8-17.2L93.3 384l197.3 0 31.8 76.3c6.8 16.3 25.5 24 41.8 17.2s24-25.5 17.2-41.8l-40-96-120-288zM264 320l-144 0 72-172.8L264 320z"/></svg>
+
+    <svg id="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M19.7 34.5c16.3-6.8 35 .9 41.8 17.2L192 364.8 322.5 51.7c6.8-16.3 25.5-24 41.8-17.2s24 25.5 17.2 41.8l-160 384c-5 11.9-16.6 19.7-29.5 19.7s-24.6-7.8-29.5-19.7L2.5 76.3c-6.8-16.3 .9-35 17.2-41.8z"/></svg>
+    <svg id="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M19.7 34.5c16.3-6.8 35 .9 41.8 17.2L192 364.8 322.5 51.7c6.8-16.3 25.5-24 41.8-17.2s24 25.5 17.2 41.8l-160 384c-5 11.9-16.6 19.7-29.5 19.7s-24.6-7.8-29.5-19.7L2.5 76.3c-6.8-16.3 .9-35 17.2-41.8z"/></svg>
+    
+    
+
+   </div>
+   
+        <div class="logo-name">AVV WORKS</div>
+    </div>
+</div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"
+integrity="sha512-gmwBmiTVER57N3jYS3LinA9eb8aHrJua5iQD7yqYCKa5x6Jjc7VDVaEA0je0Lu0bP9j7tEjV3+1qUm6loO99Kw=="
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="./loder.js"></script>
+
+
+     <!-- Chatbot Button -->
+     <button class="chatbot-btn" onclick="toggleChatbox()">
+        <i class="fa fa-comment"></i>
+    </button>
+
+    <!-- Chatbox Container -->
+    <div class="chatbox-container" id="chatbox">
+        <div class="chatbox-header">
+            Chat with Us
+            <span class="close-chat" onclick="toggleChatbox()">&times;</span>
+        </div>
+        <iframe 
+            class="chatbox-iframe" 
+            src="https://www.chatbase.co/chatbot-iframe/EN4XXytg6WeH_lHrZAg-K">
+        </iframe>
+    </div>
+
+    <!-- JavaScript to Toggle Chatbox -->
+    <script>
+        function toggleChatbox() {
+            var chatbox = document.getElementById("chatbox");
+            if (chatbox.style.display === "none" || chatbox.style.display === "") {
+                chatbox.style.display = "block";
+            } else {
+                chatbox.style.display = "none";
+            }
+        }
+    </script>
+    <section class="header">
+        
+        <nav>
+            <!-- <a href="index.html"><img src="">AVV</a> -->
+            <div class="nav-links" id="navLinks">  
+                <i class="fa fa-close" onclick="hideMenu()"></i>
+                <ul>
+                    
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="course.html">SERVICES</a></li>
+                    <li><a href="blog.html">BLOG</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+        
+        <div class="text-box">
+            <h1>AAV Works Pvt. Ltd. - Railway S&T Design</h1>
+            <p>Experts in Railway Signaling & Telecommunication (S&T) Design & Drawings.</p>
+            <a href="contact.html" class="hero-btn">Contact Us for More Information</a>
+        </div>
+        </section>
+        
+        <!---------- course ----------->
+        
+        <section class="course">
+            <h1>Our Services</h1>
+            <p>Specializing in Railway Signaling & Telecommunication Design</p>
+            <div class="row">
+                <div class="course-col">
+                    <h3>Railway Signaling Drawings</h3>
+                    <p>Includes SIP, TOC/RCC, cable route plans, and track bonding plans essential for railway projects.</p>
+                </div>
+                <div class="course-col">
+                    <h3>Auto Section Drawings</h3>
+                    <p>ABS cable route plans, ABS core plans, and UFSBI system configurations.</p>
+                </div>
+                <div class="course-col">
+                    <h3>Relay & Data Logger Circuits</h3>
+                    <p>Designing data logger circuits, LC gate circuits, and relay rack particulars for effective signaling solutions.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!---------- campus ---------->
+        
+        <section class="campus">
+            <h1>Our Locations</h1>
+<p>Operating from key locations in Hyderabad, Telangana, and Chirala, Andhra Pradesh.</p>
+
+                <div class="row">
+                    <div class="campus-col">
+                        <img src="images/london.png">
+                        <div class="layer">
+                            <h3>Hyderabad</h3>
+                        </div>
+                    </div>
+                    <div class="campus-col">
+                        <img src="images/newyork.png">
+                        <div class="layer">
+                            <h3>Andhra Pradesh</h3>
+                        </div>
+                    </div>
+                    <div class="campus-col">
+                        <img src="images/washington.png">
+                        <div class="layer">
+                            <h3>Telangana</h3>
+                        </div>
+                    </div>
+                    
+                </div>
+        </section>
+        
+        <!---------- Facilities ---------->
+        
+        <section class="facility">
+            <h1>Our Expertise</h1>
+            <p>Specialized in railway signaling and telecommunication design.</p>
+            <div class="row">
+                <div class="facility-col">
+                    <img src="images/design.png">
+                    <h3>Railway Signaling Design</h3>
+                    <p>Comprehensive SIPs, cable route plans, and location particulars for precision and reliability.</p>
+                </div>
+                <div class="facility-col">
+                    <img src="images/circuity.png">
+                    <h3>Advanced Circuit Design</h3>
+                    <p>Design of data logger circuits, earthing diagrams, and relay rack particulars.</p>
+                </div>
+                <div class="facility-col">
+                    <img src="images/system.png">
+                    <h3>System Integration</h3>
+                    <p>Expertise in UFSBI configurations and NV-MUX circuit designs.</p>
+                </div>
+            </div>
+        </section>
+        
+    
+<!---------- testimonials ---------->
+    
+<section class="testimonials">
+    <h1>What Our Clients Say</h1>
+    <p>Trusted by railway projects across India.</p>
+    <div class="row">
+        <div class="testimonial-col">
+            <img src="images/user1.jpg">
+            <div> 
+                <p>"AAV Works Pvt. Ltd. provided precise railway signaling drawings that met our project requirements perfectly."</p>
+                <h3>Rajesh Kumar</h3>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+            </div>
+        </div>
+        <div class="testimonial-col">
+            <img src="images/user2.jpg">
+            <div>
+                <p>"The team at AAV Works is highly professional and delivered quality drawings on time. I highly recommend their services."</p>
+                <h3>Anjali Sharma</h3>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!------ Call To Action ------>
+
+<section class="cta">
+    <h1>Partner with Us for Professional S&T Design Solutions</h1>
+    <a href="mailto:info.aavworks@gmail.com" class="hero-btn">CONTACT US</a>
+</section>
+
+<!-------- footer ---------->
+
+<section class="footer">
+    <h4>About AAV Works Pvt. Ltd.</h4>
+    <p>Providing reliable and innovative railway signaling and telecommunication design services to meet your project needs.</p>
+    <div class="icons">
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-instagram"></i></a>
+        <a href="#"><i class="fa fa-linkedin"></i></a>
+    </div>
+    <p>Made with <i class="fa fa-heart-o"></i> by AAV Works Pvt. Ltd.</p>
+</section>
+
+<!----JavaScript for toggle menu---->
+<script>
+    var navLinks = document.getElementById("navLinks");
+
+    function showMenu() {
+        navLinks.style.right = "0";
+    }
+
+    function hideMenu() {
+        navLinks.style.right = "-200px";
+    }
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

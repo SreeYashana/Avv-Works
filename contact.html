@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AAV Works Pvt. Ltd. - Railway S&T Design</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
+</head>
+<body>
+    <section class="sub-header">
+        <nav>
+            <div class="nav-links" id="navLinks">  
+                <i class="fa fa-close" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="course.html">SERVICES</a></li>
+                    <li><a href="blog.html">BLOG</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+        <h1>Contact Us</h1>
+    </section>
+    
+    <!-- Google Map -->
+    <section class="location">
+        
+        <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3806.8615583950364!2d78.58115767516563!3d17.418430283473995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTfCsDI1JzA2LjQiTiA3OMKwMzUnMDEuNCJF!5e0!3m2!1sen!2sin!4v1737553212427!5m2!1sen!2sin" width="720" height="445" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </section>
+    
+    <!-- Contact Us Form -->
+    <section class="contact-us">
+        <div class="row">
+            <div class="contact-col">
+                <div>
+                    <i class="fa fa-home"></i>
+                    <span>
+                        <h5>H.NO.1-10, Bommak Brothers Colony</h5>
+                        <p>Boduppal, Dist: Medchal Malkajgiri, Hyderabad, Telangana - 500092</p>
+                    </span>
+                </div>
+                <div>
+                    <i class="fa fa-phone"></i>
+                    <span>
+                        <h5>Contact Us</h5>
+                        <p>+91 9777447861</p>
+                    </span>
+                </div>
+                <div>
+                    <i class="fa fa-envelope-o"></i>
+                    <span>
+                        <h5>Email Contacts</h5>
+                        <p>info.aavworks@gmail.com, aavworkspvtltd@gmail.com</p>
+                    </span>
+                </div>
+            </div>
+            <div class="contact-col">
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="name" placeholder="Enter your name" required>
+                    <input type="email" name="email" placeholder="Enter email address" required>
+                    <input type="text" name="subject" placeholder="Enter your subject" required>
+                    <textarea rows="8" name="message" placeholder="Message" required></textarea>
+                    <button type="submit" class="hero-btn red-btn">Send Message</button>
+                </form> 
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <section class="footer">
+        <h4>About AAV Works Pvt. Ltd.</h4>
+        <p>Providing reliable and innovative railway signaling and telecommunication design services to meet your project needs.</p>
+        <div class="icons">
+            <i class="fa fa-facebook"></i>
+            <i class="fa fa-twitter"></i>
+            <i class="fa fa-instagram"></i>
+            <i class="fa fa-linkedin"></i>
+        </div>
+        <p>Made with <i class="fa fa-heart-o"></i> by AAV Works Pvt. Ltd.</p>
+    </section>    
+
+    <!-- JavaScript for Google Sheets Form Submission with Popup -->
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycby0Q-8jR48ZVzOTr4yqXnzPOskZQhQw3i5TeU8Twu4G8R2cUYk2dTDDTvpzXX-Dy8QSww/exec'
+        const form = document.forms['submit-to-google-sheet'];
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                alert("🎉 Message Sent Successfully! \nThank you for contacting us.");
+                form.reset();  // Clear form after submission
+            })
+            .catch(error => {
+                alert("❌ Error! \nThere was a problem submitting your message.");
+                console.error('Error!', error.message);
+            });
+        });
+    </script>
+
+    <!-- JavaScript for Toggle Menu -->
+    <script>
+        var navLinks = document.getElementById("navLinks");
+
+        function showMenu() {
+            navLinks.style.right = "0";
+        }
+
+        function hideMenu() {
+            navLinks.style.right = "-200px";
+        }
+    </script> 
+    
+</body>
+</html>
